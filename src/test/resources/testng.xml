@@ -1,0 +1,7 @@
+<suite name="Orange HRM Suite" data-provider-thread-count="1">
+    <test name="OrangeHRMTests">
+        <classes>
+            <class name="runner.TestRunner"/>
+        </classes>
+    </test>
+</suite>
