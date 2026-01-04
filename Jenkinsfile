@@ -48,7 +48,7 @@ pipeline {
             steps {
                 cucumber(
                     buildStatus: 'UNSTABLE',
-                    reportTitle: 'OrangeHRM Test Automation Report',
+                    reportTitle: 'OrangeHRM UI Test Report',
                     fileIncludePattern: '**/cucumber.json'
                 )
             }
