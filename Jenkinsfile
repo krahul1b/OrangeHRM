@@ -35,10 +35,10 @@ pipeline {
 
         stage('Build & Execute Tests') {
             steps {
-                sh """
-                mvn clean test \
-                -Dbrowser=${params.BROWSER} \
-                -Denvironment=${params.ENVIRONMENT} \
+                bat """
+                mvn clean test ^
+                -Dbrowser=${params.BROWSER} ^
+                -Denvironment=${params.ENVIRONMENT} ^
                 -Dcucumber.filter.tags=${params.TAGS}
                 """
             }
