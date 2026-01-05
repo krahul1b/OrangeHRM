@@ -17,6 +17,11 @@ pipeline {
             defaultValue: '@smoke',
             description: 'Cucumber tags to execute'
         )
+        booleanParam(
+            name: 'RUN_ON_GRID',
+            defaultValue: false,
+            description: 'Run tests on Selenium Grid'
+        )
     }
 
     environment {
@@ -39,7 +44,8 @@ pipeline {
                 mvn clean test ^
                 -Dbrowser=${params.BROWSER} ^
                 -Denvironment=${params.ENVIRONMENT} ^
-                -Dcucumber.filter.tags=${params.TAGS}
+                -Dcucumber.filter.tags=${params.TAGS} ^
+                -DrunOnGrid=${RUN_ON_GRID}
                 """
             }
         }
