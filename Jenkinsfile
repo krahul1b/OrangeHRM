@@ -45,7 +45,7 @@ pipeline {
                 -Dbrowser=${params.BROWSER} ^
                 -Denvironment=${params.ENVIRONMENT} ^
                 -Dcucumber.filter.tags=${params.TAGS} ^
-                -DrunOnGrid=${RUN_ON_GRID}
+                -DrunOnGrid=${params.RUN_ON_GRID}
                 """
             }
         }
