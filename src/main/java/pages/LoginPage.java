@@ -41,7 +41,7 @@ public class LoginPage {
                 chromeOptions.addArguments("--start-maximized");
                 if(runOnGrid)
                 {
-                    chromeOptions.setCapability("platformName", "WINDOWS");
+                    chromeOptions.setCapability("platformName", "LINUX");
 
                     // Create RemoteWebDriver session with Grid
                     try
