@@ -63,7 +63,7 @@ public class LoginPage {
                 firefoxOptions.addArguments("--start-maximized");
                 if(runOnGrid)
                 {
-                    firefoxOptions.setCapability("platformName", "WINDOWS");
+                    firefoxOptions.setCapability("platformName", "LINUX");
 
                     // Create RemoteWebDriver session with Grid
                     try
