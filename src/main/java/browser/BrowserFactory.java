@@ -8,6 +8,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
 public class BrowserFactory {
     static WebDriver driver;
 
@@ -23,7 +26,9 @@ public class BrowserFactory {
             {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--start-maximized");
+                    Map<String, Object> prefs = new HashMap<>();
+                    prefs.put("profile.password_manager_leak_detection", false);
+                    chromeOptions.setExperimentalOption("prefs", prefs);
                     if(runOnGrid)
                     {
                         chromeOptions.setCapability("platformName", desiredOS);
