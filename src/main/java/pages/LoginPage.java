@@ -1,20 +1,9 @@
 package pages;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
+import browser.BrowserFactory;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class LoginPage {
-    private WebDriver driver;
     private String oragneHRMurl= "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
 
     // Locators
@@ -32,62 +21,13 @@ public class LoginPage {
     //Constructor
     public LoginPage()
     {
-        String desiredBrowser = System.getProperty("browser", "chrome");
-        boolean runOnGrid = Boolean.parseBoolean(System.getProperty("runOnGrid", "false"));
-        switch (desiredBrowser)
-        {
-            case "chrome":
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
-                if(runOnGrid)
-                {
-                    chromeOptions.setCapability("platformName", "LINUX");
-
-                    // Create RemoteWebDriver session with Grid
-                    try
-                    {
-                        driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
-                    }
-                    catch (MalformedURLException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                else
-                {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(chromeOptions);
-                }
-                break;
-            case "firefox":
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--start-maximized");
-                if(runOnGrid)
-                {
-                    firefoxOptions.setCapability("platformName", "LINUX");
-
-                    // Create RemoteWebDriver session with Grid
-                    try
-                    {
-                        driver = new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions);
-                    }
-                    catch (MalformedURLException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                else
-                {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver(firefoxOptions);
-                }
-                break;
-        }
-        PageFactory.initElements(driver, this);  // Initializes all @FindBy
+        PageFactory.initElements(BrowserFactory.getDriver(), this);  // Initializes all @FindBy
     }
 
     // Actions
     public void openLoginPage()
     {
-        driver.get(oragneHRMurl);
+        BrowserFactory.getDriver().get(oragneHRMurl);
         customWait();
     }
 
@@ -129,12 +69,12 @@ public class LoginPage {
     public String currentURL()
     {
         customWait();
-        return driver.getCurrentUrl();
+        return BrowserFactory.getDriver().getCurrentUrl();
     }
 
     public void closeBrowser()
     {
-        driver.close();
+        BrowserFactory.getDriver().close();
     }
 
     public void customWait()

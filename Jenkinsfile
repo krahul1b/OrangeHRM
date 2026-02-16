@@ -8,6 +8,11 @@ pipeline {
             description: 'Browser to execute tests'
         )
         choice(
+            name: 'OPERATINGSYSTEM',
+            choices: ['WINDOWS', 'LINUX'],
+            description: 'Operating System on which need to execute tests'
+        )
+        choice(
             name: 'ENVIRONMENT',
             choices: ['qa', 'uat'],
             description: 'Target environment'
@@ -43,6 +48,7 @@ pipeline {
                 bat """
                 mvn clean test ^
                 -Dbrowser=${params.BROWSER} ^
+                -Dos=${params.OPERATINGSYSTEM} ^
                 -Denvironment=${params.ENVIRONMENT} ^
                 -Dcucumber.filter.tags=${params.TAGS} ^
                 -DrunOnGrid=${params.RUN_ON_GRID}
