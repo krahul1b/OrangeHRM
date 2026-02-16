@@ -72,11 +72,6 @@ public class LoginPage {
         return BrowserFactory.getDriver().getCurrentUrl();
     }
 
-    public void closeBrowser()
-    {
-        BrowserFactory.getDriver().close();
-    }
-
     public void customWait()
     {
         try {

@@ -93,9 +93,4 @@ public class LoginPageStepDefinition {
         Assert.assertEquals(loginPage.currentURL(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
-    @Then("I close the browser")
-    public void i_close_the_browser()
-    {
-        loginPage.closeBrowser();
-    }
 }
