@@ -8,11 +8,11 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import java.util.List;
 
-public class LoginPageStepDefinition {
+public class LoginStepDefinition {
     private LoginPage loginPage;
 
     //Constructor
-    public LoginPageStepDefinition()
+    public LoginStepDefinition()
     {
         loginPage = new LoginPage();
     }
