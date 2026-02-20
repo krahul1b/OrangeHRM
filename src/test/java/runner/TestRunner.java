@@ -5,8 +5,8 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(features = "src/test/resources/features",
         glue = {"stepdefinitions","browser"},
-        plugin = {"pretty", "html:target/cucumber-reports.html"},
-        tags = "(@smoke or @regression) and not (@ignore or @wip)")
+        plugin = {"html:target/cucumber-reports.html","json:target/cucumber.json", "pretty"},
+        tags = "(@smoke or @regression) and not (@wip or @ignore)")
 
 public class TestRunner extends AbstractTestNGCucumberTests {
     @Override
@@ -16,3 +16,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         return super.scenarios();
     }
 }
+
+
