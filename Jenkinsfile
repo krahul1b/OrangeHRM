@@ -20,7 +20,7 @@ pipeline {
         string(
             name: 'TAGS',
             defaultValue: '@smoke',
-            description: 'Cucumber tags to execute'
+            description: 'To run tests tagged with'
         )
         booleanParam(
             name: 'RUN_ON_GRID',
