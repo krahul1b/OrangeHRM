@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
-    private String oragneHRMurl= "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
 
     // Locators
     @FindBy(name = "username")
@@ -27,7 +26,7 @@ public class LoginPage {
     // Actions
     public void openLoginPage()
     {
-        BrowserFactory.getDriver().get(oragneHRMurl);
+        BrowserFactory.getDriver().get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         customWait();
     }
 
